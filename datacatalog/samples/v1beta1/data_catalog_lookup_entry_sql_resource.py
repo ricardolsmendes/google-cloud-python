@@ -50,7 +50,7 @@ def sample_lookup_entry(sql_name):
     entry = response
     print(u"Entry name: {}".format(entry.name))
     print(u"Entry type: {}".format(enums.EntryType(entry.type).name))
-    print(u"Linked Resource name: {}".format(entry.linked_resource))
+    print(u"Linked resource: {}".format(entry.linked_resource))
     print(u"Display name: {}".format(entry.display_name))
     print(u"Description: {}".format(entry.description))
 
