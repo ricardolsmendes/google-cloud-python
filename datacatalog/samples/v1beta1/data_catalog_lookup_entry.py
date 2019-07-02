@@ -30,8 +30,9 @@ import sys
 from google.cloud import datacatalog_v1beta1
 from google.cloud.datacatalog_v1beta1 import enums
 
+
 def sample_lookup_entry(resource_name):
-  """
+    """
     Lookup Entry
 
     Args:
@@ -43,26 +44,30 @@ def sample_lookup_entry(resource_name):
       //pubsub.googleapis.com/projects/projectId/topics/topicId
     """
 
-  client = datacatalog_v1beta1.DataCatalogClient()
+    client = datacatalog_v1beta1.DataCatalogClient()
 
-  # resource_name = '[Full Resource Name]'
-  response = client.lookup_entry(linked_resource=resource_name)
-  entry = response
-  print(u'Entry name: {}'.format(entry.name))
-  print(u'Entry type: {}'.format(enums.EntryType(entry.type).name))
-  print(u'Linked Resource name: {}'.format(entry.linked_resource))
-  print(u'Display name: {}'.format(entry.display_name))
-  print(u'Description: {}'.format(entry.description))
+    # resource_name = '[Full Resource Name]'
+    response = client.lookup_entry(linked_resource=resource_name)
+    entry = response
+    print(u"Entry name: {}".format(entry.name))
+    print(u"Entry type: {}".format(enums.EntryType(entry.type).name))
+    print(u"Linked Resource name: {}".format(entry.linked_resource))
+    print(u"Display name: {}".format(entry.display_name))
+    print(u"Description: {}".format(entry.description))
+
+
 # [END data_catalog_lookup_entry]
 
+
 def main():
-  import argparse
+    import argparse
 
-  parser = argparse.ArgumentParser()
-  parser.add_argument('--resource_name', type=str, default='[Full Resource Name]')
-  args = parser.parse_args()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--resource_name", type=str, default="[Full Resource Name]")
+    args = parser.parse_args()
 
-  sample_lookup_entry(args.resource_name)
+    sample_lookup_entry(args.resource_name)
 
-if __name__ == '__main__':
-  main()
+
+if __name__ == "__main__":
+    main()
