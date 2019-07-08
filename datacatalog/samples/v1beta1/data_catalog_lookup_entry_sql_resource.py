@@ -39,8 +39,8 @@ def sample_lookup_entry(sql_name):
       sql_name The SQL name of the Google Cloud Platform resource the Data Catalog
       entry represents.
       Examples:
-      bigquery.table.`projectId`.`datasetId`.`tableId`
-      pubsub.topic.`projectId`.`topicId`
+      bigquery.table.`bigquery-public-data`.`new_york_taxi_trips`.`taxi_zone_geom`
+      pubsub.topic.`pubsub-public-data`.`taxirides-realtime`
     """
 
     client = datacatalog_v1beta1.DataCatalogClient()

@@ -40,8 +40,8 @@ def sample_lookup_entry(resource_name):
       Catalog entry represents.
       See: https://cloud.google.com/apis/design/resource_names#full_resource_name
       Examples:
-      //bigquery.googleapis.com/projects/projectId/datasets/datasetId/tables/tableId
-      //pubsub.googleapis.com/projects/projectId/topics/topicId
+      //bigquery.googleapis.com/projects/bigquery-public-data/datasets/new_york_taxi_trips/tables/taxi_zone_geom
+      //pubsub.googleapis.com/projects/pubsub-public-data/topics/taxirides-realtime
     """
 
     client = datacatalog_v1beta1.DataCatalogClient()
