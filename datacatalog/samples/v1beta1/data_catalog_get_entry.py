@@ -22,7 +22,7 @@
 # sample-metadata
 #   title:
 #   description: Get Entry
-#   usage: python3 samples/v1beta1/data_catalog_get_entry.py [--project "[Google Cloud Project ID]"] [--location "[Google Cloud Location]"] [--entry_group_id "[Entry Group ID]"] [--entry_id "[Entry ID]"]
+#   usage: python3 samples/v1beta1/data_catalog_get_entry.py [--project_id "[Google Cloud Project ID]"] [--location_id "[Google Cloud Location ID]"] [--entry_group_id "[Entry Group ID]"] [--entry_id "[Entry ID]"]
 import sys
 
 # [START data_catalog_get_entry]
@@ -31,24 +31,24 @@ from google.cloud import datacatalog_v1beta1
 from google.cloud.datacatalog_v1beta1 import enums
 
 
-def sample_get_entry(project, location, entry_group_id, entry_id):
+def sample_get_entry(project_id, location_id, entry_group_id, entry_id):
     """
     Get Entry
 
     Args:
-      project Your Google Cloud project ID
-      location Google Cloud region, e.g. us-central1
+      project_id Your Google Cloud project ID
+      location_id Google Cloud region, e.g. us-central1
       entry_group_id ID of the Entry Group of this entry
       entry_id ID of the Entry
     """
 
     client = datacatalog_v1beta1.DataCatalogClient()
 
-    # project = '[Google Cloud Project ID]'
-    # location = '[Google Cloud Location]'
+    # project_id = '[Google Cloud Project ID]'
+    # location_id = '[Google Cloud Location ID]'
     # entry_group_id = '[Entry Group ID]'
     # entry_id = '[Entry ID]'
-    name = client.entry_path(project, location, f'@{entry_group_id}', entry_id)
+    name = client.entry_path(project_id, location_id, f'@{entry_group_id}', entry_id)
 
     response = client.get_entry(name)
     entry = response
@@ -64,13 +64,15 @@ def main():
     import argparse
 
     parser = argparse.ArgumentParser()
-    parser.add_argument("--project", type=str, default="[Google Cloud Project ID]")
-    parser.add_argument("--location", type=str, default="[Google Cloud Location]")
+    parser.add_argument("--project_id", type=str, default="[Google Cloud Project ID]")
+    parser.add_argument("--location_id", type=str, default="[Google Cloud Location ID]")
     parser.add_argument("--entry_group_id", type=str, default="[Entry Group ID]")
     parser.add_argument("--entry_id", type=str, default="[Entry ID]")
     args = parser.parse_args()
 
-    sample_get_entry(args.project, args.location, args.entry_group_id, args.entry_id)
+    sample_get_entry(
+        args.project_id, args.location_id, args.entry_group_id, args.entry_id
+    )
 
 
 if __name__ == "__main__":
