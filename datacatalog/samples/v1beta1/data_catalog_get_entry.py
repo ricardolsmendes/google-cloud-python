@@ -48,7 +48,7 @@ def sample_get_entry(project_id, location_id, entry_group_id, entry_id):
     # location_id = '[Google Cloud Location ID]'
     # entry_group_id = '[Entry Group ID]'
     # entry_id = '[Entry ID]'
-    name = client.entry_path(project_id, location_id, f'@{entry_group_id}', entry_id)
+    name = client.entry_path(project_id, location_id, entry_group_id, entry_id)
 
     response = client.get_entry(name)
     entry = response
