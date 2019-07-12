@@ -46,7 +46,7 @@ def sample_create_tag_template(project_id, location_id):
     # location_id = '[Google Cloud Location ID]'
     parent = client.location_path(project_id, location_id)
 
-    # Tag Template ID.
+    # The Tag Template ID.
     tag_template_id = "sample_tag_template"
     display_name = "Sample Tag Template"
     display_name_2 = "Source of data asset"
@@ -87,7 +87,7 @@ def sample_create_tag_template(project_id, location_id):
     tag_template = {"display_name": display_name, "fields": fields}
 
     response = client.create_tag_template(parent, tag_template_id, tag_template)
-    print(u"Template name: {}".format(response.name))
+    print(u"Tag Template name: {}".format(response.name))
 
 
 # [END data_catalog_create_tag_template]
