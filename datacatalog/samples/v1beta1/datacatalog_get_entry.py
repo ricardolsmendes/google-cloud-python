@@ -14,7 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# DO NOT EDIT! This is a generated sample ("Request",  "data_catalog_get_entry")
+# DO NOT EDIT! This is a generated sample ("Request",  "datacatalog_get_entry")
 
 # To install the latest published package dependency, execute the following:
 #   pip install google-cloud-datacatalog
@@ -22,10 +22,10 @@
 # sample-metadata
 #   title:
 #   description: Get Entry
-#   usage: python3 samples/v1beta1/data_catalog_get_entry.py [--project_id "[Google Cloud Project ID]"] [--location_id "[Google Cloud Location ID]"] [--entry_group_id "[Entry Group ID]"] [--entry_id "[Entry ID]"]
+#   usage: python3 samples/v1beta1/datacatalog_get_entry.py [--project_id "[Google Cloud Project ID]"] [--location_id "[Google Cloud Location ID]"] [--entry_group_id "[Entry Group ID]"] [--entry_id "[Entry ID]"]
 import sys
 
-# [START data_catalog_get_entry]
+# [START datacatalog_get_entry]
 
 from google.cloud import datacatalog_v1beta1
 from google.cloud.datacatalog_v1beta1 import enums
@@ -38,7 +38,7 @@ def sample_get_entry(project_id, location_id, entry_group_id, entry_id):
     Args:
       project_id Your Google Cloud project ID
       location_id Google Cloud region, e.g. us-central1
-      entry_group_id ID of the Entry Group of this entry
+      entry_group_id ID of the Entry Group, e.g. @bigquery, @pubsub
       entry_id ID of the Entry
     """
 
@@ -57,7 +57,7 @@ def sample_get_entry(project_id, location_id, entry_group_id, entry_id):
     print(u"Linked resource: {}".format(entry.linked_resource))
 
 
-# [END data_catalog_get_entry]
+# [END datacatalog_get_entry]
 
 
 def main():
