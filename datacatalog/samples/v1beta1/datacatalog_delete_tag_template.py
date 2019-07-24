@@ -14,7 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# DO NOT EDIT! This is a generated sample ("Request",  "data_catalog_delete_tag_template")
+# DO NOT EDIT! This is a generated sample ("Request",  "datacatalog_delete_tag_template")
 
 # To install the latest published package dependency, execute the following:
 #   pip install google-cloud-datacatalog
@@ -22,10 +22,10 @@
 # sample-metadata
 #   title:
 #   description: Delete Tag Template
-#   usage: python3 samples/v1beta1/data_catalog_delete_tag_template.py [--project_id "[Google Cloud Project ID]"] [--location_id "[Google Cloud Location ID]"] [--tag_template_id "[Tag Template ID]"] [--force true]
+#   usage: python3 samples/v1beta1/datacatalog_delete_tag_template.py [--project_id "[Google Cloud Project ID]"] [--location_id "[Google Cloud Location ID]"] [--tag_template_id "[Tag Template ID]"] [--force true]
 import sys
 
-# [START data_catalog_delete_tag_template]
+# [START datacatalog_delete_tag_template]
 
 from google.cloud import datacatalog_v1beta1
 
@@ -52,7 +52,7 @@ def sample_delete_tag_template(project_id, location_id, tag_template_id, force):
     client.delete_tag_template(name, force)
 
 
-# [END data_catalog_delete_tag_template]
+# [END datacatalog_delete_tag_template]
 
 
 def main():

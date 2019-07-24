@@ -14,7 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# DO NOT EDIT! This is a generated sample ("Request",  "data_catalog_create_tag_template")
+# DO NOT EDIT! This is a generated sample ("Request",  "datacatalog_create_tag_template")
 
 # To install the latest published package dependency, execute the following:
 #   pip install google-cloud-datacatalog
@@ -22,10 +22,10 @@
 # sample-metadata
 #   title:
 #   description: Create Tag Template
-#   usage: python3 samples/v1beta1/data_catalog_create_tag_template.py [--project_id "[Google Cloud Project ID]"] [--location_id "[Google Cloud Location ID]"]
+#   usage: python3 samples/v1beta1/datacatalog_create_tag_template.py [--project_id "[Google Cloud Project ID]"] [--location_id "[Google Cloud Location ID]"]
 import sys
 
-# [START data_catalog_create_tag_template]
+# [START datacatalog_create_tag_template]
 
 from google.cloud import datacatalog_v1beta1
 from google.cloud.datacatalog_v1beta1 import enums
@@ -90,7 +90,7 @@ def sample_create_tag_template(project_id, location_id):
     print(u"Tag Template name: {}".format(response.name))
 
 
-# [END data_catalog_create_tag_template]
+# [END datacatalog_create_tag_template]
 
 
 def main():
