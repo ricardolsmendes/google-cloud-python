@@ -14,7 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# DO NOT EDIT! This is a generated sample ("RequestPagedAll",  "data_catalog_search")
+# DO NOT EDIT! This is a generated sample ("RequestPagedAll",  "datacatalog_search")
 
 # To install the latest published package dependency, execute the following:
 #   pip install google-cloud-datacatalog
@@ -22,10 +22,10 @@
 # sample-metadata
 #   title:
 #   description: Search Catalog
-#   usage: python3 samples/v1beta1/data_catalog_search.py [--include_project_id "[Google Cloud Project ID]"] [--include_gcp_public_datasets False] [--query "[String in search query syntax]"]
+#   usage: python3 samples/v1beta1/datacatalog_search.py [--include_project_id "[Google Cloud Project ID]"] [--include_gcp_public_datasets false] [--query "[String in search query syntax]"]
 import sys
 
-# [START data_catalog_search]
+# [START datacatalog_search]
 
 from google.cloud import datacatalog_v1beta1
 from google.cloud.datacatalog_v1beta1 import enums
@@ -67,7 +67,7 @@ def sample_search_catalog(include_project_id, include_gcp_public_datasets, query
         print(u"Linked resource: {}\n".format(response_item.linked_resource))
 
 
-# [END data_catalog_search]
+# [END datacatalog_search]
 
 
 def main():
