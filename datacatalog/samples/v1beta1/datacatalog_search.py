@@ -40,6 +40,8 @@ def sample_search_catalog(include_project_id, include_gcp_public_datasets, query
       include_gcp_public_datasets If true, include Google Cloud Platform (GCP) public
       datasets in the search results.
       query Your query string.
+      See: https://cloud.google.com/data-catalog/docs/how-to/search-reference
+      Example: system=bigquery type=dataset
     """
 
     client = datacatalog_v1beta1.DataCatalogClient()
