@@ -256,8 +256,8 @@ def test__make_bqstorage_client_false():
     assert got is None
 
 
-@pytest.mark.skipIf(
-    bigquery_storage_v1beta1 is None, "Requires `google-cloud-bigquery-storage`"
+@pytest.mark.skipif(
+    bigquery_storage_v1beta1 is None, reason="Requires `google-cloud-bigquery-storage`"
 )
 def test__make_bqstorage_client_true():
     credentials_mock = mock.create_autospec(
@@ -318,6 +318,31 @@ def test_bigquery_magic_without_optional_arguments(monkeypatch):
     assert isinstance(return_value, pandas.DataFrame)
     assert len(return_value) == len(result)  # verify row count
     assert list(return_value) == list(result)  # verify column names
+
+
+@pytest.mark.usefixtures("ipython_interactive")
+def test_bigquery_magic_default_connection_user_agent():
+    ip = IPython.get_ipython()
+    ip.extension_manager.load_extension("google.cloud.bigquery")
+    magics.context._connection = None
+
+    credentials_mock = mock.create_autospec(
+        google.auth.credentials.Credentials, instance=True
+    )
+    default_patch = mock.patch(
+        "google.auth.default", return_value=(credentials_mock, "general-project")
+    )
+    run_query_patch = mock.patch(
+        "google.cloud.bigquery.magics._run_query", autospec=True
+    )
+    conn_patch = mock.patch("google.cloud.bigquery.client.Connection", autospec=True)
+
+    with conn_patch as conn, run_query_patch, default_patch:
+        ip.run_cell_magic("bigquery", "", "SELECT 17 as num")
+
+    client_info_arg = conn.call_args.kwargs.get("client_info")
+    assert client_info_arg is not None
+    assert client_info_arg.user_agent == "ipython-" + IPython.__version__
 
 
 @pytest.mark.usefixtures("ipython_interactive")
@@ -411,8 +436,8 @@ def test_bigquery_magic_clears_display_in_verbose_mode():
 
 
 @pytest.mark.usefixtures("ipython_interactive")
-@pytest.mark.skipIf(
-    bigquery_storage_v1beta1 is None, "Requires `google-cloud-bigquery-storage`"
+@pytest.mark.skipif(
+    bigquery_storage_v1beta1 is None, reason="Requires `google-cloud-bigquery-storage`"
 )
 def test_bigquery_magic_with_bqstorage_from_argument(monkeypatch):
     ip = IPython.get_ipython()
@@ -461,8 +486,8 @@ def test_bigquery_magic_with_bqstorage_from_argument(monkeypatch):
 
 
 @pytest.mark.usefixtures("ipython_interactive")
-@pytest.mark.skipIf(
-    bigquery_storage_v1beta1 is None, "Requires `google-cloud-bigquery-storage`"
+@pytest.mark.skipif(
+    bigquery_storage_v1beta1 is None, reason="Requires `google-cloud-bigquery-storage`"
 )
 def test_bigquery_magic_with_bqstorage_from_context(monkeypatch):
     ip = IPython.get_ipython()
@@ -511,8 +536,8 @@ def test_bigquery_magic_with_bqstorage_from_context(monkeypatch):
 
 
 @pytest.mark.usefixtures("ipython_interactive")
-@pytest.mark.skipIf(
-    bigquery_storage_v1beta1 is None, "Requires `google-cloud-bigquery-storage`"
+@pytest.mark.skipif(
+    bigquery_storage_v1beta1 is None, reason="Requires `google-cloud-bigquery-storage`"
 )
 def test_bigquery_magic_without_bqstorage(monkeypatch):
     ip = IPython.get_ipython()
@@ -559,9 +584,17 @@ def test_bigquery_magic_w_maximum_bytes_billed_invalid():
     ip.extension_manager.load_extension("google.cloud.bigquery")
     magics.context._project = None
 
+    credentials_mock = mock.create_autospec(
+        google.auth.credentials.Credentials, instance=True
+    )
+    default_patch = mock.patch(
+        "google.auth.default", return_value=(credentials_mock, "general-project")
+    )
+    client_query_patch = mock.patch("google.cloud.bigquery.client.Client.query")
+
     sql = "SELECT 17 AS num"
 
-    with pytest.raises(ValueError):
+    with pytest.raises(ValueError), default_patch, client_query_patch:
         ip.run_cell_magic("bigquery", "--maximum_bytes_billed=abc", sql)
 
 
