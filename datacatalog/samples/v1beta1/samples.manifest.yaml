@@ -1,0 +1,8 @@
+version: 2
+sets:
+- environment: python
+  bin: python3
+  path: /Users/loricardo/work/projects/data-catalog/google-cloud-python/datacatalog/
+  __items__:
+  - path: samples/v1beta1/datacatalog_search.py
+    sample: datacatalog_search
